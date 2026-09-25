@@ -31,7 +31,7 @@ Two properties are treated as non negotiable:
 ## Quickstart
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/redmi50/llm-rubric-evaluation-harness.git
 cd llm-rubric-evaluation-harness
 python -m venv .venv
 source .venv/bin/activate
