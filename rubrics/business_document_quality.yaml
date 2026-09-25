@@ -1,0 +1,44 @@
+rubric_id: business_document_quality
+title: Business document quality
+pass_threshold: 0.6
+criteria:
+  - name: accuracy
+    weight: 0.35
+    grader: key_facts
+    description: Whether the figures, definitions and claims in the document are correct.
+    levels:
+      1: Figures are wrong or unsupported and the document would mislead a reader.
+      2: At least one headline figure is wrong, or a definition is used inconsistently.
+      3: Figures are correct but a definition or a period comparison is imprecise.
+      4: Figures are correct and consistently defined, with minor presentational imprecision.
+      5: Figures are correct, consistently defined, and reconcile to their source.
+  - name: structure
+    weight: 0.25
+    grader: "holistic:structure"
+    description: Whether the document follows a logical order a decision maker can navigate.
+    levels:
+      1: The document is an undifferentiated block of text with no clear flow.
+      2: Sections exist but the order works against the reader's question.
+      3: The structure is serviceable but the conclusion appears late.
+      4: The document leads with the conclusion and the sections follow logically.
+      5: The document leads with the conclusion, signposts the detail, and ends with clear actions.
+  - name: decision_usefulness
+    weight: 0.25
+    grader: "holistic:decision_usefulness"
+    description: Whether the reader can act on the document without further analysis.
+    levels:
+      1: No recommendation is made and no decision is enabled.
+      2: The recommendation is implied rather than stated.
+      3: A recommendation is stated but is not tied to the evidence or to an owner.
+      4: The recommendation follows from the evidence and is specific.
+      5: The recommendation is specific, evidenced, and paired with a next step and an owner.
+  - name: concision
+    weight: 0.15
+    grader: "holistic:concision"
+    description: Whether the document respects the reader's time.
+    levels:
+      1: The document is dominated by filler and the substance is hard to find.
+      2: There is significant repetition or irrelevant background.
+      3: Some passages could be cut without losing meaning.
+      4: The document is tight, with only minor redundancy.
+      5: Every sentence carries information and nothing could be removed without losing meaning.

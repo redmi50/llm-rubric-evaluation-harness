@@ -1,0 +1,34 @@
+rubric_id: key_fact_recall
+title: Explanation quality against a required fact set
+pass_threshold: 0.65
+criteria:
+  - name: coverage
+    weight: 0.45
+    grader: key_facts
+    description: Whether every fact a correct explanation must state is present.
+    levels:
+      1: None of the required facts appear, so the explanation is unusable.
+      2: A minority of the required facts appear and a key one is absent.
+      3: Most required facts appear but one material fact is missing.
+      4: Every required fact appears, stated plainly.
+      5: Every required fact appears, stated plainly and without contradicting any of them.
+  - name: reasoning
+    weight: 0.3
+    grader: "holistic:reasoning"
+    description: Whether the facts are connected into a causal or logical chain rather than listed.
+    levels:
+      1: The facts are listed with no connection between them.
+      2: The facts are connected inconsistently, or the logic runs backwards.
+      3: The facts are connected but the explanation stops short of the conclusion.
+      4: The facts are connected into a chain that reaches the conclusion.
+      5: The facts are connected into a chain that reaches the conclusion and acknowledges what would change it.
+  - name: clarity
+    weight: 0.25
+    grader: "holistic:clarity"
+    description: Whether a non specialist reader could follow the explanation and act on it.
+    levels:
+      1: The explanation is unintelligible or consists only of a bare figure.
+      2: The explanation is confusing, or buries the point in unrelated commentary.
+      3: The point is present but the surrounding explanation is thin or loosely ordered.
+      4: The explanation is clear and the point is easy to locate.
+      5: The explanation is clear, defines its terms, and the point is immediately visible.

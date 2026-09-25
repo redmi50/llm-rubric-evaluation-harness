@@ -1,0 +1,44 @@
+rubric_id: statistical_validity
+title: Statistical validity of an analysis
+pass_threshold: 0.65
+criteria:
+  - name: method_appropriateness
+    weight: 0.3
+    grader: "holistic:method_appropriateness"
+    description: Whether the statistical method suits the data structure and the question asked.
+    levels:
+      1: The method is inappropriate for the data and the conclusion is unsupported.
+      2: The method mismatches the data structure, for example an independent test on paired data.
+      3: The method is defensible but not the most appropriate, and this is not acknowledged.
+      4: The method is appropriate and the reasoning for choosing it is stated.
+      5: The method is appropriate, justified, and any alternatives are ruled out explicitly.
+  - name: assumption_checking
+    weight: 0.3
+    grader: "holistic:assumption_checking"
+    description: Whether the assumptions behind the method were examined rather than assumed.
+    levels:
+      1: No assumptions are mentioned.
+      2: Assumptions are named but not examined, or obvious violations are ignored.
+      3: Key assumptions are named and at least one is checked.
+      4: Assumptions are checked and any violation is discussed with its consequence.
+      5: Assumptions are checked, violations are quantified, and a robust alternative is offered.
+  - name: interpretation
+    weight: 0.25
+    grader: "holistic:interpretation"
+    description: Whether the conclusion matches what the evidence actually supports.
+    levels:
+      1: The conclusion is contradicted by the data or asserts causation from association.
+      2: The conclusion overstates the evidence, for example ignoring multiplicity or selection.
+      3: The conclusion is broadly right but loses important caveats.
+      4: The conclusion matches the evidence and states the main limitation.
+      5: The conclusion matches the evidence, states its limits, and avoids unsupported causal claims.
+  - name: transparency
+    weight: 0.15
+    grader: "holistic:transparency"
+    description: Whether the analysis can be reproduced from what is reported.
+    levels:
+      1: No method, sample or definition is reported.
+      2: The method is named but the sample, window or definition is missing.
+      3: The method and sample are reported but one key definition is unstated.
+      4: Method, sample, window and definitions are all reported.
+      5: Everything needed to reproduce the result is reported, including exclusions and thresholds.

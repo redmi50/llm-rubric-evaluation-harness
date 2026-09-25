@@ -1,0 +1,34 @@
+rubric_id: quantitative_reasoning
+title: Quantitative reasoning quality
+pass_threshold: 0.6
+criteria:
+  - name: correctness
+    weight: 0.45
+    grader: answer_accuracy
+    description: Whether the final answer matches the reference within tolerance.
+    levels:
+      1: The answer is wrong or absent.
+      2: The answer is substantially off, more than a few percent outside tolerance.
+      3: The answer is close but not within tolerance, or a required component is missing.
+      4: The answer is within tolerance with only a minor rounding or phrasing difference.
+      5: The answer matches the reference exactly and is stated without ambiguity.
+  - name: method
+    weight: 0.3
+    grader: "holistic:method"
+    description: Whether the correct technique was selected and applied to the right quantities.
+    levels:
+      1: An inappropriate technique is used and no reasoning is offered.
+      2: The technique is inappropriate, or the reasoning relies on a wrong assumption.
+      3: The technique is broadly right but applied inconsistently, or one step is skipped.
+      4: The correct technique is applied with a minor gap in the working.
+      5: The correct technique is applied cleanly and every step is justified.
+  - name: clarity
+    weight: 0.25
+    grader: "holistic:clarity"
+    description: Whether a non specialist reader could follow the response and reuse the result.
+    levels:
+      1: The response is unintelligible, or consists only of a bare figure.
+      2: The response is confusing, or buries the answer in unrelated commentary.
+      3: The answer is present but the surrounding explanation is thin or loosely ordered.
+      4: The response is clear and the answer is easy to locate.
+      5: The response is clear, states its assumptions, and the answer is immediately visible.

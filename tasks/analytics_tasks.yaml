@@ -1,0 +1,122 @@
+tasks:
+  - task_id: analytics_aggregation_weighting
+    domain: analytics
+    rubric_id: quantitative_reasoning
+    answer_type: numeric
+    tolerance: 0.5
+    prompt: >-
+      A monthly report lists the average order value for each month together with
+      the number of orders in that month. The analyst reports the overall average
+      as the plain mean of the twelve monthly averages. Recompute the correct
+      overall average order value and state it to two decimal places.
+
+      January average 120.00 over 1000 orders, February 180.00 over 50 orders,
+      March 140.00 over 800 orders, April 100.00 over 1200 orders,
+      May 160.00 over 400 orders, June 200.00 over 300 orders,
+      July 130.00 over 900 orders, August 150.00 over 700 orders,
+      September 110.00 over 1100 orders, October 170.00 over 600 orders,
+      November 190.00 over 200 orders, December 210.00 over 250 orders.
+    expected_reference: "136.07"
+
+  - task_id: analytics_churn_denominator
+    domain: analytics
+    rubric_id: quantitative_reasoning
+    answer_type: numeric
+    tolerance: 0.05
+    prompt: >-
+      A subscription business started the month with 40,000 active accounts and
+      ended it with 38,600. Over the month 1,400 accounts cancelled. Report the
+      monthly churn rate as a percentage of the starting base, to one decimal
+      place.
+    expected_reference: "3.5"
+
+  - task_id: stats_multiplicity_decision
+    domain: experimentation
+    rubric_id: statistical_validity
+    answer_type: text
+    prompt: >-
+      An experiment reports a 2.1 percent lift in conversion with a p value of
+      0.03. The team has run twelve other experiments this quarter and this is
+      the first to reach significance. Advise on whether to ship, and state what
+      other information is needed.
+    expected_reference: >-
+      A single p value below 0.05 does not establish a real effect when many
+      comparisons have been run, because the expected number of false positives
+      grows with the number of tests. The result should be corrected for
+      multiplicity, for example with a Bonferroni or Benjamini Hochberg
+      adjustment, and the experiment should be checked for a pre registered
+      primary metric, adequate power, and an effect size large enough to matter
+      in practice before any shipping decision is taken.
+
+  - task_id: stats_aggregate_reversal
+    domain: analytics
+    rubric_id: statistical_validity
+    answer_type: text
+    prompt: >-
+      Treatment A shows a higher overall success rate than Treatment B, but when
+      the patients are split by severity of illness Treatment A is worse in every
+      severity group. Explain how this can happen and what the analyst should
+      report.
+    expected_reference: >-
+      This reversal arises from an unbalanced confounder, because the severity mix
+      differs between the two treatment groups. Severity is related both to the
+      treatment a patient received and to the outcome, so the aggregate
+      comparison is confounded and the pooled rate is not a valid estimate of the
+      treatment effect. The analyst should report the severity stratified
+      comparison, and if a single number is required, a standardised rate that
+      holds the severity mix fixed, rather than the crude overall rate.
+
+  - task_id: stats_leakage_explanation
+    domain: machine_learning
+    rubric_id: key_fact_recall
+    answer_type: text
+    prompt: >-
+      A churn model reports 0.96 area under the curve. Its most important feature
+      is account_closed_date, which is populated only for customers who have
+      already left. Explain the problem and state what the analyst should do.
+    expected_reference: >-
+      The feature leaks the target because it only becomes observable after the
+      outcome has occurred, so it cannot be present when the model scores a live
+      customer. The measured performance is therefore inflated and will not
+      reproduce in production. The analyst should remove the feature, rebuild the
+      model without any field that is populated after the outcome, and re
+      evaluate using a time based split that respects when each field actually
+      becomes available.
+    key_facts:
+      - the feature leaks the target
+      - it only becomes observable after the outcome has occurred
+      - it cannot be present when the model scores a live customer
+      - the measured performance is inflated and will not reproduce in production
+      - the analyst should remove the feature
+      - rebuild the model without any field that is populated after the outcome
+      - re evaluate using a time based split
+
+  - task_id: docs_incident_review
+    domain: business_reporting
+    rubric_id: business_document_quality
+    answer_type: text
+    prompt: >-
+      Write the opening section of a weekly operations memo for the executive
+      team. Settlement failures rose from 0.4 percent of transactions to 1.1
+      percent week on week, driven by one payment partner whose timeout rate
+      tripled. Say what happened, what it cost, and what you recommend. The memo
+      must be usable on its own by a reader who has not seen the underlying data.
+    expected_reference: >-
+      Settlement failures rose from 0.4 to 1.1 percent of transactions this week,
+      an increase of roughly 3,000 failed transaction attempts, and the cause is
+      a single payment partner whose timeout rate tripled. The effect is
+      concentrated in that partner and the remaining partners are within their
+      normal range, so the increase is not a general platform problem. Recommend
+      routing traffic away from the partner until its timeout rate returns to
+      baseline, with the owner of the payments integration confirming recovery
+      before traffic is restored, and a follow up review of the partner
+      monitoring thresholds so the next degradation is caught earlier. The 3,000
+      figure is an estimate on the week's volume and should be reconciled to the
+      ledger before external use.
+    key_facts:
+      - settlement failures rose from 0.4 to 1.1 percent
+      - the cause is a single payment partner whose timeout rate tripled
+      - the remaining partners are within their normal range
+      - traffic should be routed away from the partner
+      - the owner of the payments integration should confirm recovery
+      - the estimate should be reconciled to the ledger before external use
